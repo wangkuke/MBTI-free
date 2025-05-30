@@ -149,13 +149,6 @@ export default function ResultPage() {
   const [traits, setTraits] = useState<any>(null)
   const router = useRouter();
 
-  useEffect(() => {
-    const paymentStatus = localStorage.getItem('paymentStatus');
-    if (paymentStatus !== 'paid') {
-      router.push('/payment');
-      return; // Stop further execution if not paid
-    }
-
     const result = localStorage.getItem("mbtiResult")
     const percentagesStr = localStorage.getItem("mbtiPercentages")
     
