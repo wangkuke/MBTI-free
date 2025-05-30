@@ -5,8 +5,8 @@ import { useEffect, useState, Suspense } from 'react';
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 
-// 将使用 useSearchParams 的逻辑提取到子组件
-function PaymentContent() {
+// 1. 将支付处理逻辑提取到独立组件
+function PaymentProcessor() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
@@ -63,7 +63,7 @@ function PaymentContent() {
   );
 }
 
-// 主组件使用 Suspense 包裹
+// 2. 主组件添加额外的Suspense边界
 export default function PaymentPage() {
   return (
     <Suspense fallback={
@@ -73,7 +73,7 @@ export default function PaymentPage() {
         </div>
       </div>
     }>
-      <PaymentContent />
+      <PaymentProcessor />
     </Suspense>
   );
 }
