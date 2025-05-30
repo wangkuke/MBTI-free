@@ -149,14 +149,15 @@ export default function ResultPage() {
   const [traits, setTraits] = useState<any>(null)
   const router = useRouter();
 
+  useEffect(() => {
     const result = localStorage.getItem("mbtiResult")
     const percentagesStr = localStorage.getItem("mbtiPercentages")
-    
+
     if (result) {
       setMbtiType(result)
       setTraits(mbtiTraits[result])
     }
-    
+
     if (percentagesStr) {
       setPercentages(JSON.parse(percentagesStr))
     }
